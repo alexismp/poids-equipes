@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Poids Équipe</title>
+  <style>
+    body {
+      width: 250px;
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    h1 {
+      font-size: 18px;
+      color: #0056a4;
+      margin: 15px 10px 20px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+    .weight-section {
+      margin-bottom: 10px;
+    }
+    .weight-label {
+      font-size: 15px;
+      color: #0056a4;
+    }
+    .weight-value {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d9534f;
+      margin-bottom: 15px;
+    }
+    h2 {
+      font-size: 16px;
+      color: #0056a4;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+      margin-top: 15px;
+    }
+    #teamWeight {
+      font-size: 24px;
+      font-weight: bold;
+      color: #d9534f;
+      margin: 10px 0;
+    }
+    #topRankings {
+      list-style-type: none;
+      padding: 0;
+      margin-bottom: 15px;
+    }
+    #topRankings li {
+      margin: 5px 0;
+      font-size: 14px;
+      background-color: #fff;
+      padding: 5px;
+      border-radius: 3px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    .message {
+        padding: 10px;
+        font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="popupTitle">Poids Équipe</h1>
+  <div class="weight-section">
+    <div class="weight-label">Poids des 4 meilleurs</div>
+    <div id="top4Weight" class="weight-value">...</div>
+  </div>
+  <div class="weight-section">
+    <div class="weight-label">Poids de l'équipe</div>
+    <div id="squadWeight" class="weight-value">...</div>
+  </div>
+  <h2>Top 4 Classements</h2>
+  <ul id="topRankings">
+    <li class="message">Chargement...</li>
+  </ul>
+  <script src="popup.js"></script>
+</body>
+</html>
