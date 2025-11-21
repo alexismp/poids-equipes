@@ -23,6 +23,48 @@ if (typeof window.poidsEquipeExtensionLoaded === 'undefined') {
     return rankOrder.length;
   };
 
+  const getDoublesEquivalent = (rank) => {
+    const rankToValueMap = {
+      // Negative Ranks
+      "-15": -3,
+      "-4/6": -2,
+      "-2/6": -1,
+      // "Seconde Série"
+      "0": 0,
+      "1/6": 1,
+      "2/6": 2,
+      "3/6": 3,
+      "4/6": 4,
+      "5/6": 5,
+      // "Troisième Série"
+      "15": 6,
+      "15/1": 7,
+      "15/2": 8,
+      "15/3": 9,
+      "15/4": 10,
+      "15/5": 11,
+      "30": 12,
+      "30/1": 13,
+      "30/2": 14,
+      "30/3": 15,
+      "30/4": 16,
+      "30/5": 17,
+      // "Quatrième Série"
+      "40": 18,
+      "NC": 19,
+    };
+
+    if (rank.startsWith('N')) {
+      const number = parseInt(rank.substring(1), 10);
+      return -number - 3;
+    }
+
+    if (rank in rankToValueMap) {
+      return rankToValueMap[rank];
+    }
+    return 20; // Fallback for unknown ranks
+  };
+
   const parsePage = () => {
       let teamName = null;
       let weightSpans = [];
@@ -63,15 +105,12 @@ if (typeof window.poidsEquipeExtensionLoaded === 'undefined') {
 
       const players = [];
       weightSpans.forEach(span => {
-          const weightMatch = span.textContent.match(/\(([-]?\d+)\)/);
-          if (weightMatch && weightMatch[1]) {
-              const weight = parseInt(weightMatch[1], 10);
-              const rankingSpan = span.previousElementSibling;
-              if (rankingSpan) {
-                  const ranking = rankingSpan.textContent.trim();
-                  if (ranking) {
-                      players.push({ ranking, weight });
-                  }
+          const rankingSpan = span.previousElementSibling;
+          if (rankingSpan) {
+              const ranking = rankingSpan.textContent.trim();
+              if (ranking && getRankValue(ranking) < 23) {
+                  const doublesEquivalent = getDoublesEquivalent(ranking);
+                  players.push({ ranking: ranking, value: doublesEquivalent });
               }
           }
       });
@@ -86,9 +125,10 @@ if (typeof window.poidsEquipeExtensionLoaded === 'undefined') {
       }
 
       players.sort((a, b) => getRankValue(a.ranking) - getRankValue(b.ranking));
-      const squadWeight = players.reduce((sum, player) => sum + player.weight, 0) / players.length;
+
+      const squadWeight = players.reduce((sum, player) => sum + player.value, 0) / players.length;
       const top4Players = players.slice(0, 4);
-      const top4Weight = top4Players.reduce((sum, player) => sum + player.weight, 0) / top4Players.length;
+      const top4Weight = top4Players.reduce((sum, player) => sum + player.value, 0) / top4Players.length;
       const topRankings = top4Players.map(p => p.ranking);
 
       return { teamName: finalTitle, top4Weight, squadWeight, topRankings, playerCount: players.length };
