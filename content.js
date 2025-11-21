@@ -63,7 +63,7 @@ if (typeof window.poidsEquipeExtensionLoaded === 'undefined') {
 
       const players = [];
       weightSpans.forEach(span => {
-          const weightMatch = span.textContent.match(/\((\d+)\)/);
+          const weightMatch = span.textContent.match(/\(([-]?\d+)\)/);
           if (weightMatch && weightMatch[1]) {
               const weight = parseInt(weightMatch[1], 10);
               const rankingSpan = span.previousElementSibling;
