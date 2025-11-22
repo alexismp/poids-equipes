@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Poids Équipes FFT",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Calcule le poids de l'équipe et liste les 4 meilleurs joueurs depuis les pages tenup.fft.fr.",
   "permissions": [
     "activeTab",
