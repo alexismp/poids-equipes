@@ -130,8 +130,10 @@ if (typeof window.poidsEquipeExtensionLoaded === 'undefined') {
       const top4Players = players.slice(0, 4);
       const top4Weight = top4Players.reduce((sum, player) => sum + player.value, 0) / top4Players.length;
       const topRankings = top4Players.map(p => p.ranking);
+      const top3Players = players.slice(0, 3);
+      const top3Weight = top3Players.reduce((sum, player) => sum + player.value, 0);
 
-      return { teamName: finalTitle, top4Weight, squadWeight, topRankings, playerCount: players.length };
+      return { teamName: finalTitle, top4Weight, squadWeight, topRankings, playerCount: players.length, top3Weight };
   };
 
   chrome.runtime.onMessage.addListener(
