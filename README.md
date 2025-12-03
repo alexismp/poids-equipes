@@ -1,26 +1,24 @@
-# Extension Chrome "Poids Équipes FFT"
+# Extension Chrome "Poids Équipes FFT" (v1.5)
 
 Cette extension pour Google Chrome (et autres navigateurs basés sur Chromium) permet d'analyser les pages d'équipes sur le site `tenup.fft.fr` de la Fédération Française de Tennis.
 
-Elle calcule deux indicateurs de "poids" pour une équipe et liste les quatre meilleurs joueurs en se basant sur leurs classements.
+Elle calcule deux indicateurs de "poids" pour une équipe et liste les trois meilleurs joueurs en se basant sur leurs classements.
 
 ## Fonctionnalités
 
-- **Calcul du poids de l'équipe** : Calcule le poids moyen de l'ensemble de l'équipe.
-- **Calcul du poids des 4 meilleurs** : Calcule le poids moyen des quatre joueurs les mieux classés.
-- **Identification des meilleurs joueurs** : Affiche les classements des quatre meilleurs joueurs.
+- **Calcul du poids de l'équipe** : Calcule le poids total et moyen des (n) meilleurs joueurs de l'équipe (ou de toute l'équipe)
+- **Identification des meilleurs classements** : Affiche les classements des trois meilleurs joueurs.
 
 ### Méthode de Calcul
 
 Le "poids" de chaque joueur est déterminé par un barème qui assigne une valeur numérique à chaque échelon de classement (par exemple, -15, 0, 15/1, 30/2, etc.). Cette valeur est inspirée du calcul des poids pour les doubles.
 
-L'extension calcule ensuite la moyenne de ces valeurs pour :
-1.  L'ensemble des joueurs de l'équipe.
-2.  Les quatre joueurs les plus performants.
+L'extension calcule ensuite la somme et la moyenne de ces valeurs pour un nombre ajustable des meilleurs joueurs de l'équipe.
 
 ## Comment Installer
+Cette extension Chrome est téléchargeable ici: https://chromewebstore.google.com/detail/hfaiclfdgjoebpohopohafpijmheifjc
 
-Comme il s'agit d'une extension non empaquetée, vous devez la charger manuellement.
+Si vous utilisez le code source, il s'agit d'une extension non empaquetée, vous devez la charger manuellement.
 
 1.  **Ouvrir la Page des Extensions** :
     *   Ouvrez votre navigateur et accédez à `chrome://extensions` (ou l'équivalent pour votre navigateur).
@@ -39,4 +37,4 @@ Comme il s'agit d'une extension non empaquetée, vous devez la charger manuellem
 
 1.  Accédez à une page d'équipe sur le site `tenup.fft.fr`.
 2.  Cliquez sur l'icône de l'extension dans votre barre d'outils.
-3.  Une fenêtre affichera le nom de l'équipe, le poids de l'effectif complet, le poids des 4 meilleurs joueurs, et la liste de leurs classements.
+3.  Une fenêtre affichera le nom de l'équipe, le poids total et moyen des meilleurs joureurs et la liste des classements pris en compte.

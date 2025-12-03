@@ -133,7 +133,7 @@ if (typeof window.poidsEquipeExtensionLoaded === 'undefined') {
       const top3Players = players.slice(0, 3);
       const top3Weight = top3Players.reduce((sum, player) => sum + player.value, 0);
 
-      return { teamName: finalTitle, top4Weight, squadWeight, topRankings, playerCount: players.length, top3Weight };
+      return { teamName: finalTitle, top4Weight, squadWeight, topRankings, playerCount: players.length, top3Weight, players };
   };
 
   chrome.runtime.onMessage.addListener(

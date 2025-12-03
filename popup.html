@@ -61,26 +61,39 @@
         padding: 10px;
         font-size: 13px;
     }
+    footer {
+      font-size: 8px;
+      color: #666;
+      margin-top: 10px;
+      border-top: 1px solid #ccc;
+      padding-top: 8px;
+    }
+    footer a {
+      color: #0056a4;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <h1 id="popupTitle">Poids Équipe</h1>
   <div class="weight-section">
-    <div class="weight-label">Poids total S1+S2+S3</div>
-    <div id="top3Weight" class="weight-value">...</div>
+    <label for="player-slider" class="weight-label">Nombre de joueurs : <span id="slider-value">3</span></label>
+    <input type="range" id="player-slider" min="2" max="15" value="3" style="width: 100%;">
   </div>
   <div class="weight-section">
-    <div class="weight-label">Poids moyen des 4 meilleurs</div>
-    <div id="top4Weight" class="weight-value">...</div>
+    <div class="weight-label">Poids de l'équipe</div>
+    <div id="teamWeight" class="weight-value">...</div>
   </div>
-  <div class="weight-section">
-    <div class="weight-label">Poids moyen de l'équipe</div>
-    <div id="squadWeight" class="weight-value">...</div>
-  </div>
-  <h2>Top 4 Classements</h2>
+  <h2>Meilleurs Joueurs</h2>
   <ul id="topRankings">
     <li class="message">Chargement...</li>
   </ul>
+  <footer>
+    <p>Version <span id="version"></span> - <a href="https://github.com/alexismp/poids-equipes" target="_blank">GitHub</a></p>
+  </footer>
   <script src="popup.js"></script>
 </body>
 </html>
